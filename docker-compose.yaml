@@ -13,23 +13,23 @@ services:
     restart: always
     volumes:
       - .:/yamdb_final:rw
-      - static_volume:/code/static
-    ports:
-      - "8000:8000"
+      - static:/code/static
+    expose:
+      - 8000
     depends_on:
       - db
     env_file:
       - ./.env
-#  nginx:
-#    build: ./nginx
-#    volumes:
-#      - static_volume:/code/static
-#    ports:
-#      - "8080:80"
-#    depends_on:
-#      - web
-#    restart: always
+  nginx:
+    build: ./nginx
+    volumes:
+      - static:/code/static
+    ports:
+      - "8080:80"
+    depends_on:
+      - web
+    restart: always
 
 volumes:
   postgres_data:
-  static_volume:
+  static:
