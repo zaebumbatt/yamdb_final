@@ -20,3 +20,5 @@ static/
 posts/static/
 
 db.sqlite3
+
+.env
