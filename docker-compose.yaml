@@ -7,6 +7,7 @@ services:
       - ./.env
     restart: always
   web:
+    image: zaebumba/yamdb_final
     container_name: yamdb
     build: .
     restart: always
