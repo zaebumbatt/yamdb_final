@@ -56,6 +56,6 @@ jobs:
        source: "docker-compose.yaml, nginx/default.conf"
        target: "~/app/"
        script: |
-         sudo docker-compose pull ${{ secrets.USER }}/yamdb_final
-         sudo docker-compose stop $(sudo docker ps -a -q)
-         sudo docker-compose run --rm -d -p 5000:5000 ${{ secrets.USER }}/yamdb_final
+         sudo docker pull ${{ secrets.USER }}/yamdb_final
+         sudo docker stop $(sudo docker ps -a -q)
+         sudo docker run --rm -d -p 5000:5000 ${{ secrets.USER }}/yamdb_final
