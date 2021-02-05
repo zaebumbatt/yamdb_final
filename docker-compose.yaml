@@ -14,8 +14,7 @@ services:
       - ./.env
     restart: always
   web:
-    container_name: yamdb
-    build: .
+    image: zaebumba/yamdb_final
     restart: always
     expose:
       - 8000
