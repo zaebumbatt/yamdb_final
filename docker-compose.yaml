@@ -25,7 +25,7 @@ services:
   nginx:
     image: nginx:1.19.6
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - /home/zaebumba/yamdb_final/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - static:/static
       - media:/media
     ports:
