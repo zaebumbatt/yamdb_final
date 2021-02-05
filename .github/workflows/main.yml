@@ -54,8 +54,6 @@ jobs:
        username: ${{ secrets.USER }}
        key: ${{ secrets.SSH_KEY }}
        passphrase: ${{ secrets.PASSPHRASE }}
-       source: "docker-compose.yaml, nginx/default.conf"
-       target: "~/code/"
        script: |
          sudo apt-get update -y
          sudo apt-get remove docker docker-engine docker.io -y
