@@ -55,20 +55,6 @@ jobs:
            passphrase: ${{ secrets.PASSPHRASE }}
            source: "yamdb_final/docker-compose.yaml, yamdb_final/nginx/default.conf"
            target: "yamdb_final"
-
-- name: Deploy Files
-      uses: appleboy/scp-action@master
-      env:
-        HOST: ${{  secrets.aws_pull_host }}
-        USERNAME: ${{ secrets.aws_pull_username }}
-        KEY: ${{ secrets.aws_pull_private_key }}
-      with:
-        source: frontend/build/
-        target: "/home/build/site/testDir/"
-        strip_components: 1
-
-
-
   deploy-execute:
     runs-on: ubuntu-latest
     needs: deploy-copy
