@@ -55,17 +55,16 @@ jobs:
        key: ${{ secrets.SSH_KEY }}
        passphrase: ${{ secrets.PASSPHRASE }}
        source: "docker-compose.yaml, nginx/default.conf"
-       target: "~/app/"
+       target: "~/code/"
        script: |
          sudo apt-get update -y
          sudo apt-get remove docker docker-engine docker.io -y
          sudo apt install docker.io -y
          sudo systemctl start docker
          sudo systemctl enable docker
-         sudo docker-compose stop
-         sudo docker-compose rm -f
-         sudo docker-compose pull ${{ secrets.USER }}/yamdb_final
-         sudo docker-compose up -d
+         sudo docker pull ${{ secrets.USER }}/yamdb_final
+         sudo docker stop $(sudo docker ps -a -q)
+         sudo docker run --rm -d -p 8000:8000 ${{ secrets.USER }}/yamdb_final
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
