@@ -30,7 +30,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
-        source: "docker-compose.yaml, nginx/default.conf"
+        source: "docker-compose.yaml,nginx/default.conf"
         target: "yamdb_final"
 
   build_and_push_to_docker_hub:
