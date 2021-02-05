@@ -23,8 +23,9 @@ services:
     env_file:
       - ./.env
   nginx:
-    build: ./nginx
+    image: nginx:1.19.6
     volumes:
+      - ./nginx:/etc/nginx/conf.d
       - static:/static
       - media:/media
     ports:
