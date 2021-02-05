@@ -12,8 +12,7 @@ services:
     build: .
     restart: always
     volumes:
-      - .:/yamdb_final:rw
-      - static:/static
+      - static:/code/
     expose:
       - 8000
     depends_on:
@@ -23,7 +22,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static:/static
+      - static:/code/
     ports:
       - "8080:80"
     depends_on:
