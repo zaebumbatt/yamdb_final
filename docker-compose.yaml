@@ -1,35 +1,33 @@
-version: "3.3"
-
-volumes:
-  postgres_data:
-  static:
-  media:
+version: "3.8"
 
 services:
   db:
     image: postgres:12.4
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
     restart: always
   web:
-    image: zaebumba/yamdb_final
+    container_name: yamdb
+    build: .
     restart: always
-    ports:
-      - "8000:8000"
+    volumes:
+      - .:/yamdb_final:rw
+      - static_volume:/code/static
+    expose:
+      - 8000
     depends_on:
       - db
     env_file:
       - ./.env
   nginx:
-    image: nginx:1.19.6
+    build: ./nginx
     volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - static:/static
-      - media:/media
+      - static_volume:/code/static
     ports:
       - "8080:80"
     depends_on:
       - web
     restart: always
+
+volumes:
+  static_volume:
