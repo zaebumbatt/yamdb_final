@@ -57,7 +57,7 @@ jobs:
            target: "~/yamdb_final/"
   deploy-execute:
     runs-on: ubuntu-latest
-    needs: build_and_push_to_docker_hub
+    needs: deploy-copy
     if: github.ref == 'refs/heads/master'
     steps:
       - name: executing remote ssh commands to deploy
