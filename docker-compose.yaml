@@ -11,10 +11,8 @@ services:
     container_name: yamdb
     build: .
     restart: always
-    volumes:
-      - static:/code/
     expose:
-      - "8000"
+      - 8000
     depends_on:
       - db
     env_file:
@@ -22,7 +20,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static:/code/
+      - static:/static
     ports:
       - "8080:80"
     depends_on:
