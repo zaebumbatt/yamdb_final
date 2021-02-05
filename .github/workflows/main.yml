@@ -66,8 +66,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker-compose up --build -d -f ~/yamdb_final/docker-compose.yaml
+            sudo docker-compose -f yamdb_final/docker-compose.yaml down -v
+            sudo docker-compose -f yamdb_final/docker-compose.yaml up -d
 
   send_message:
     runs-on: ubuntu-latest
