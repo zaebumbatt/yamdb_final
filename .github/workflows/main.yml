@@ -54,14 +54,9 @@ jobs:
        username: ${{ secrets.USER }}
        key: ${{ secrets.SSH_KEY }}
        passphrase: ${{ secrets.PASSPHRASE }}
-       script: |
-         sudo apt-get update -y
-         sudo apt-get remove docker docker-engine docker.io -y
-         sudo apt install docker.io -y
-         sudo systemctl start docker
-         sudo systemctl enable docker
-         sudo docker stop $(sudo docker ps -a -q)
-         sudo docker-compose up --build -d
+      script: |
+        sudo docker stop $(sudo docker ps -a -q)
+        sudo docker-compose up --build -d
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
