@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.8"
 
 volumes:
   postgres_data:
@@ -14,7 +14,8 @@ services:
       - ./.env
     restart: always
   web:
-    image: zaebumba/yamdb_final:latest
+    container_name: yamdb
+    build: .
     restart: always
     expose:
       - 8000
@@ -25,8 +26,8 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static:/code/static
-      - media:/code/media
+      - static:/static
+      - media:/media
     ports:
       - "8080:80"
     depends_on:
