@@ -4,4 +4,3 @@ WORKDIR /code
 COPY . .
 RUN mkdir /static
 RUN pip install -r requirements.txt
-CMD gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
