@@ -14,7 +14,14 @@ services:
       - ./.env
     restart: always
   web:
-    image: zaebumba/yamdb_final
+    image: zaebumba/yamdb_final:latest
+    command: /bin/sh -c "
+      python manage.py collectstatic --noinput &&
+      python manage.py makemigrations --noinput &&
+      python manage.py migrate --noinput &&
+      python manage.py loaddata db &&
+      gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+      "
     restart: always
     expose:
       - 8000
