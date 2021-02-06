@@ -23,7 +23,7 @@ services:
       gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
       "
     volumes:
-      - static:/home/zaebumba/yamdb_final/static
+      - static:/static
     restart: always
     expose:
       - 8000
@@ -35,8 +35,8 @@ services:
     image: nginx:1.19.6
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static:/home/zaebumba/yamdb_final/static
-      - media:/home/zaebumba/yamdb_final/media
+      - static:/static
+      - media:/media
     ports:
       - "8080:80"
     depends_on:
