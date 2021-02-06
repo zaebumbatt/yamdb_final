@@ -23,7 +23,7 @@ services:
       gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
       "
     volumes:
-      - static:/static
+      - static:/code/static
     restart: always
     expose:
       - 8000
@@ -35,8 +35,8 @@ services:
     image: nginx:1.19.6
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static:/static
-      - media:/media
+      - static:/code/static
+      - media:/code/media
     ports:
       - "8080:80"
     depends_on:
