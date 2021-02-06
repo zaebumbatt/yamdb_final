@@ -68,7 +68,6 @@ jobs:
           script: |
             sudo docker-compose -f yamdb_final/docker-compose.yaml down -v
             sudo docker-compose -f yamdb_final/docker-compose.yaml up -d
-            sudo docker-compose exec web python manage.py collectstatic --noinput
 
   send_message:
     runs-on: ubuntu-latest
