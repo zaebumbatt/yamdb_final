@@ -123,7 +123,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/zaebumba/yamdb_final/'
+STATIC_ROOT = '/home/zaebumba/yamdb_final/static/'
 
 
 # Дополнения для проекта
