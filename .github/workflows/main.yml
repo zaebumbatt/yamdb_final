@@ -20,8 +20,8 @@ jobs:
     - name: Lint with flake8
       run: flake8 . --count --exit-zero
 
-    - name: Test with pytest
-      run: pytest
+#    - name: Test with pytest
+#      run: pytest
 
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
