@@ -15,6 +15,8 @@ services:
     restart: always
   web:
     image: zaebumba/yamdb_final
+    command:
+      - python manage.py collectstatic --noinput
     restart: always
     expose:
       - 8000
